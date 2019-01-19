@@ -1,6 +1,12 @@
-
-server:
-  port: 8180
 spring:
   application:
     name: client
+
+
+logging:
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+  level:
+    root: ERROR
+    org.springframework: WARN
+    com.fred4jupiter.feignexample.client: DEBUG
