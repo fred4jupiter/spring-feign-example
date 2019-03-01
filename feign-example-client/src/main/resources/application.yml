@@ -11,10 +11,10 @@ logging:
     org.springframework: WARN
     com.fred4jupiter.feignexample.client: DEBUG
 
-# define feign clients here
-customerClient:
-  ribbon:
-    listOfServers: http://localhost:8080
+my:
+  server:
+    api:
+      url: http://localhost:8080
 
 # disable eureka at all, because we don´t use eureka
 ribbon:
