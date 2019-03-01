@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -19,9 +20,9 @@ public class CustomerController {
     private List<Customer> customers = new ArrayList<>();
 
     public CustomerController() {
-        this.customers.add(new Customer("A"));
-        this.customers.add(new Customer("B"));
-        this.customers.add(new Customer("C"));
+        this.customers.add(new Customer(1, "A"));
+        this.customers.add(new Customer(2, "B"));
+        this.customers.add(new Customer(3, "C"));
     }
 
     @GetMapping("/customers")
@@ -35,4 +36,8 @@ public class CustomerController {
         return this.customers.stream().filter(customer -> customer.getName().equals(name)).collect(Collectors.toList());
     }
 
+    @GetMapping("/customers/map")
+    public Map<Integer, String> loadKeyValues() {
+        return customers.stream().collect(Collectors.toMap(Customer::getId, Customer::getName));
+    }
 }
